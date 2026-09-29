@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verbode Support</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<style>
+  :root {
+    --bg:        #ffffff;
+    --bg-soft:   #f5f7ff;
+    --text:      #111827;
+    --text-sub:  #4b5563;
+    --text-mute: #9ca3af;
+    --accent:    #5e81f4;
+    --accent-dim:#eef1ff;
+    --border:    #e5e7eb;
+    --card-bg:   #f9fafb;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg:        #0d0f1a;
+      --bg-soft:   #141627;
+      --text:      #e8ecff;
+      --text-sub:  #9da8c9;
+      --text-mute: #5a6380;
+      --accent:    #7b9bff;
+      --accent-dim:#1a1f3a;
+      --border:    #1f2340;
+      --card-bg:   #141627;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg:        #0d0f1a;
+    --bg-soft:   #141627;
+    --text:      #e8ecff;
+    --text-sub:  #9da8c9;
+    --text-mute: #5a6380;
+    --accent:    #7b9bff;
+    --accent-dim:#1a1f3a;
+    --border:    #1f2340;
+    --card-bg:   #141627;
+    color-scheme: dark;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.7;
+    padding-inline: 24px;
+  }
+
+  .wrap { max-width: 680px; margin: 0 auto; padding-block: 56px 80px; }
+
+  .header {
+    margin-bottom: 48px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--border);
+  }
+  .logo {
+    display: inline-flex; align-items: center; gap: 10px;
+    margin-bottom: 28px; text-decoration: none;
+  }
+  .logo-mark {
+    width: 36px; height: 36px; background: var(--accent);
+    border-radius: 10px; display: grid; place-items: center; flex-shrink: 0;
+  }
+  .logo-mark svg { fill: #fff; }
+  .logo-name { font-size: 17px; font-weight: 700; color: var(--text); letter-spacing: -0.3px; }
+  h1 { font-size: 30px; font-weight: 700; color: var(--text); letter-spacing: -0.5px; text-wrap: balance; line-height: 1.25; margin-bottom: 12px; }
+  .subtitle { font-size: 16px; color: var(--text-sub); }
+
+  .section { margin-bottom: 40px; }
+  h2 { font-size: 17px; font-weight: 650; color: var(--text); letter-spacing: -0.2px; margin-bottom: 16px; }
+
+  .faq { display: flex; flex-direction: column; gap: 2px; }
+  .faq-item {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .faq-item + .faq-item { margin-top: 8px; }
+  .faq-q {
+    width: 100%; text-align: left; background: none; border: none;
+    padding: 16px 18px; cursor: pointer;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 12px; font-family: inherit;
+  }
+  .faq-q-text { font-size: 15px; font-weight: 600; color: var(--text); }
+  .faq-chevron { color: var(--text-mute); font-size: 18px; flex-shrink: 0; transition: transform .2s; }
+  .faq-item.open .faq-chevron { transform: rotate(180deg); }
+  .faq-a {
+    display: none; padding: 0 18px 16px;
+    font-size: 14px; color: var(--text-sub); line-height: 1.65;
+  }
+  .faq-item.open .faq-a { display: block; }
+
+  .contact-card {
+    background: var(--accent-dim);
+    border: 1px solid var(--accent);
+    border-radius: 14px;
+    padding: 24px 26px;
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .contact-card h3 { font-size: 17px; font-weight: 700; color: var(--text); }
+  .contact-card p { font-size: 14px; color: var(--text-sub); margin: 0; }
+  .email-display {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 14px;
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  }
+  .email-display span { font-size: 14px; font-weight: 500; color: var(--text); font-variant-numeric: tabular-nums; }
+  .copy-btn {
+    background: var(--accent); color: #fff; border: none;
+    border-radius: 6px; padding: 6px 12px; font-size: 12px; font-weight: 600;
+    cursor: pointer; font-family: inherit; flex-shrink: 0; transition: opacity .15s;
+  }
+  .copy-btn:hover { opacity: .85; }
+
+  hr { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
+
+  .links { display: flex; gap: 20px; flex-wrap: wrap; }
+  .links a { font-size: 13px; color: var(--accent); text-decoration: none; font-weight: 500; }
+  .links a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="header">
+    <a class="logo" href="#">
+      <div class="logo-mark">
+        <svg width="18" height="18" viewBox="0 0 18 18"><path d="M5 6l-3 3 3 3M13 6l3 3-3 3M10.5 3l-3 12"/></svg>
+      </div>
+      <span class="logo-name">Verbode</span>
+    </a>
+    <h1>Support</h1>
+    <p class="subtitle">We're here to help. Find answers below or reach out directly.</p>
+  </header>
+
+  <div class="section">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          <span class="faq-q-text">How do I cancel my subscription?</span>
+          <span class="faq-chevron">›</span>
+        </button>
+        <div class="faq-a">On iPhone, go to <strong>Settings → Apple ID → Subscriptions</strong>, find Verbode, and tap Cancel. On Android, open the <strong>Play Store → Profile → Payments &amp; subscriptions → Subscriptions</strong>. Cancel at least 24 hours before your renewal date to avoid being charged for the next period.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          <span class="faq-q-text">I subscribed but the app still shows free tier.</span>
+          <span class="faq-chevron">›</span>
+        </button>
+        <div class="faq-a">Tap the <strong>Restore</strong> button on the subscription page inside the app. This re-links your App Store or Google Play purchase to your account. If the problem persists, email us with your receipt number.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          <span class="faq-q-text">Can I get a refund?</span>
+          <span class="faq-chevron">›</span>
+        </button>
+        <div class="faq-a">Refunds are handled by Apple or Google, not by us. For iPhone: <a href="https://reportaproblem.apple.com" style="color:var(--accent)">reportaproblem.apple.com</a>. For Android: contact Google Play support through the Play Store app.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          <span class="faq-q-text">How do I delete my account and data?</span>
+          <span class="faq-chevron">›</span>
+        </button>
+        <div class="faq-a">Email us at <strong>shayanwork612@gmail.com</strong> with the subject "Delete my account" and the email address you signed in with. We will remove your account and all associated data within 30 days.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          <span class="faq-q-text">The app crashed or isn't loading problems.</span>
+          <span class="faq-chevron">›</span>
+        </button>
+        <div class="faq-a">Try closing and reopening the app. If the issue persists, check your internet connection — Verbode requires a connection to load problems and submit sessions. If it still doesn't work, email us with your device model and iOS/Android version.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggle(this)">
+          <span class="faq-q-text">What is Verbode Pro?</span>
+          <span class="faq-chevron">›</span>
+        </button>
+        <div class="faq-a">Verbode Pro unlocks unlimited practice sessions per day, the full library of 500+ coding problems, detailed score breakdowns across 6 performance dimensions, and the full Stats page. The free tier gives you 3 sessions per day.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Contact Us</h2>
+    <div class="contact-card">
+      <h3>Get in touch</h3>
+      <p>We typically respond within 1–2 business days.</p>
+      <div class="email-display">
+        <span id="email-text">shayanwork612@gmail.com</span>
+        <button class="copy-btn" onclick="copyEmail()">Copy</button>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="links">
+    <a href="privacy-policy.html">Privacy Policy</a>
+    <a href="terms-of-service.html">Terms of Service</a>
+  </div>
+</div>
+
+<script>
+function toggle(btn) {
+  btn.closest('.faq-item').classList.toggle('open');
+}
+
+function copyEmail() {
+  const email = document.getElementById('email-text').textContent;
+  const btn = document.querySelector('.copy-btn');
+  try {
+    navigator.clipboard.writeText(email).then(() => {
+      btn.textContent = 'Copied!';
+      setTimeout(() => btn.textContent = 'Copy', 2000);
+    }).catch(() => selectEmail());
+  } catch (e) { selectEmail(); }
+}
+
+function selectEmail() {
+  const el = document.getElementById('email-text');
+  const range = document.createRange();
+  range.selectNodeContents(el);
+  window.getSelection().removeAllRanges();
+  window.getSelection().addRange(range);
+}
+</script>
+</body>
+</html>
